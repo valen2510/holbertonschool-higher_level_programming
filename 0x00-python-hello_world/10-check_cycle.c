@@ -6,29 +6,22 @@
  **/
 int check_cycle(listint_t *list)
 {
-	listint_t *aux_list;
-	listint_t *next_node;
+	listint_t *turtle;
+	listint_t *bunny;
 
 	if (!list)
-		return (-1);
+		return (0);
 
-	aux_list = list;
-	next_node = aux_list->next;
+	turtle = list;
+	bunny = turtle->next->next;
 
-	while (aux_list)
+	while (turtle && bunny)
 	{
-		while (next_node)
-		{
-			if (next_node->next == aux_list)
-				return (1);
+		if (turtle == bunny)
+			return (1);
 
-			next_node = next_node->next;
-		}
-
-		if (!next_node)
-			break;
-
-		aux_list = aux_list->next;
+		bunny = bunny->next->next;
+		turtle = turtle->next;
 
 	}
 	return (0);
