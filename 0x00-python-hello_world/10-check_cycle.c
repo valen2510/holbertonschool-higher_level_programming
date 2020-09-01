@@ -9,8 +9,8 @@ int check_cycle(listint_t *list)
 	listint_t *turtle;
 	listint_t *bunny;
 
-	if (!list)
-		return (0);
+	if (!list && !list->next)
+		return (-1);
 
 	turtle = list;
 	bunny = turtle->next->next;
@@ -22,6 +22,9 @@ int check_cycle(listint_t *list)
 
 		bunny = bunny->next->next;
 		turtle = turtle->next;
+
+		if (!bunny)
+			break;
 
 	}
 	return (0);
