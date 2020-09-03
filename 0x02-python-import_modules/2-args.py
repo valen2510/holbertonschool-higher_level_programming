@@ -3,9 +3,9 @@ if __name__ == "__main__":
     import sys
     argv_len = len(sys.argv)
     if argv_len == 1:
-            print(" 0 arguments.")
+            print(" {:d} arguments.".format(argv_len - 1))
     else:
-        print("{:d} argument:".format(argv_len))
+        print("{:d} argument:".format(argv_len - 1))
         for i in range(argv_len):
             if i != 0:
                 print("{:d}: {:s}".format(i, sys.argv[i]))
