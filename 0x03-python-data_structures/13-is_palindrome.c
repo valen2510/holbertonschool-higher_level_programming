@@ -18,10 +18,8 @@ int is_palindrome(listint_t **head)
 		{
 			tail = aux_head;
 			elements = iterations * 2 - 1;
-			printf("%d\n", elements);
 			while (elements > 0)
 				tail = tail->next, elements--;
-			printf("%d\n", tail->n);
 			if (aux_head->n != tail->n)
 				return (0);
 			aux_head = aux_head->next;
