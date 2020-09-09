@@ -15,9 +15,9 @@ if __name__ == "__main__":
     elif operator == '-':
         result = sub(a, b)
     elif operator == '*':
-        result = sub(a, b)
+        result = mul(a, b)
     elif operator == '/':
-        result = sub(a, b)
+        result = div(a, b)
     else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
