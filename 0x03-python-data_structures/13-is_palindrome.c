@@ -7,50 +7,21 @@
  **/
 int is_palindrome(listint_t **head)
 {
-	unsigned int elements = number_elements(*head), iterations = 0;
-	listint_t *aux_head = *head, *tail = NULL;
+	listint_t *aux_head = *head;
+	int array[2000];
+	int i, j;
 
-	if (elements == 0)
+	if (!(*head))
 		return (1);
-	if (elements % 2 == 0)
+	for (i = 0; aux_head; i++)
 	{
-		for (iterations = elements / 2; iterations > 0; iterations--)
-		{
-			tail = aux_head;
-			elements = iterations * 2 - 1;
-			while (elements > 0)
-				tail = tail->next, elements--;
-			if (aux_head->n != tail->n)
-				return (0);
-			aux_head = aux_head->next;
-		}
-		return (1);
+		array[i] = aux_head->n;
+		aux_head = aux_head->next;
 	}
-		for (iterations = (elements / 2) + 1; iterations > 0; iterations--)
-		{
-			tail = aux_head;
-			elements = iterations * 2 - 1;
-			while (elements > 1)
-				tail = tail->next, elements--;
-			if (aux_head->n != tail->n)
-				return (0);
-			aux_head = aux_head->next;
-		}
-		return (1);
-}
-/**
- * number_elements - find the number of elements in a list
- * @head: head of the list
- * Return: Conter (Number of elements)
- **/
-unsigned int number_elements(listint_t *head)
-{
-	unsigned int counter = 0;
-
-	while (head)
+	for (j = 0; j < i; i--, j++)
 	{
-		counter++;
-		head = head->next;
+		if (array[j] != array[i - 1])
+			return (0);
 	}
-	return (counter);
+	return (1);
 }
