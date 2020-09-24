@@ -1,9 +1,9 @@
 <p align="center">
 <img src="https://tctechcrunch2011.files.wordpress.com/2015/11/holberton-logo-horizontal.jpg" width="450" height="250">	
-<p align="center"><h1> 0x06. Python - Classes and Objects</h1></p>
+<h1 align="center"> 0x06. Python - Classes and Objects</h1>
 
 
-<p align="center"><img src="https://i.pinimg.com/originals/8a/9c/1e/8a9c1e61caf2b857951dce42023445d0.jpg" width="400"/> </p>
+<p align="center"><img src="https://i.pinimg.com/originals/8a/9c/1e/8a9c1e61caf2b857951dce42023445d0.jpg" width="450"/> </p>
 
 <h3> 👉 Description</h3>
 <p>The objective of this project is to learn and apply the concepts of classes and objects in different tasks to a have a first approach to object oriented programming</p>
