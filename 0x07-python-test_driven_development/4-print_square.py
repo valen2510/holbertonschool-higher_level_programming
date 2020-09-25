@@ -7,7 +7,7 @@
 
 
 def print_square(size):
-    """Print a square with # character and size 0 or 
+    """Print a square with # character and size 0 or
     a positive integer, otherwise raise exceptions.
     """
     if type(size) is not int:
