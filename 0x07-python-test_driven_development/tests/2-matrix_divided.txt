@@ -1,0 +1,111 @@
+======================
+1. Divide all elements in a matrix
+======================
+Function
+========
+Function to divide all the elemnts in a matrix. The matrix must be a list of lists of 
+integers or floats. Each row of the matrix must be of the same size and all elements 
+of the matrix should be divided by div, rounded to 2 decimal places
+
+Import module:
+-------------
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Tests:
+-----
+
+Should return a new matrix with the matrix (int) elements divided by 2:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, 2)
+    [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+Should return a new matrix with the matrix (int, float) elements divided by 5:
+    >>> matrix = [[1.5, 2.89, 3], [4.6, 5.0, 6.456]]
+    >>> matrix_divided(matrix, 5)
+    [[0.3, 0.58, 0.6], [0.92, 1.0, 1.29]]
+
+Should return a new matrix with the matrix (int, float) elements divided by 5:
+    >>> matrix = [[1.5, 2.89, 3], [6, -8, 3.645], [0, -7.2, 456], [3.000000, 065.307, 7], [58.3, 0000.1, 5], [-34, 111, 2.097334567], [-88, 0, -6.4]]
+    >>> matrix_divided(matrix, 5)
+    [[0.3, 0.58, 0.6], [1.2, -1.6, 0.73], [0.0, -1.44, 91.2], [0.6, 13.06, 1.4], [11.66, 0.02, 1.0], [-6.8, 22.2, 0.42], [-17.6, 0.0, -1.28]]
+
+Should return a new matrix with the matrix of lists and div = float('inf'):
+    >>> matrix = [[-2, 5, 8], [5.2, -8.3, 1]]
+    >>> matrix_divided(matrix, float('inf'))
+    [[-0.0, 0.0, 0.0], [0.0, -0.0, 0.0]]
+
+Should return a new matrix with the matrix of lists and div = -3:
+    >>> matrix = [[0.6, 13.06, 1.4], [11.66, 0.02, 1.0], [-6.8, 22.2, 0.42]]
+    >>> matrix_divided(matrix, -3)
+    [[-0.2, -4.35, -0.47], [-3.89, -0.01, -0.33], [2.27, -7.4, -0.14]]
+
+Should raise an exception TypeError matrix void list:
+    >>> matrix = []
+    >>> matrix_divided(matrix, 1)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Should raise an exception TypeError for tuple of lists:
+    >>> matrix = ([2, 5, 8], [5.2, 8.3, 1])
+    >>> matrix_divided(matrix, 7)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Should raise an exception TypeError matrix of lists of tuples:
+    >>> matrix = [(89, 114, -167), (6.12, 67.1, 1), (3, 2.97, 3)]
+    >>> matrix_divided(matrix, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Should raise an exception ZeroDivisionError matrix of lists with div = 0:
+    >>> matrix = [[45, -567, 12], [32, 8.109, -1086]]
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+    ...
+    ZeroDivisionError: division by zero
+
+Should raise an exception TypeError matrix of lists with one element string:
+    >>> matrix = [[5, -78, 7], [32, "hello", 31]]
+    >>> matrix_divided(matrix, 7)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Should raise an exception TypeError matrix of lists with div = '6':
+    >>> matrix = [[321, 0, 12], [32, 109, -16]]
+    >>> matrix_divided(matrix, '6')
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+Should raise an exception TypeError matrix of lists with different lenghts:
+    >>> matrix = [[45, -56], [32, 8.109], [4, 2, -9]]
+    >>> matrix_divided(matrix, 5)
+    Traceback (most recent call last):
+    ...
+    TypeError: Each row of the matrix must have the same size
+
+Should raise an exception TypeError matrix of lists. function with more arguments:
+    >>> matrix = [[-345, 2], [65.09, 809], [4, 2]]
+    >>> matrix_divided(matrix, 1, 7)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() takes 2 positional arguments but 3 were given
+
+Should raise an exception TypeError matrix of lists. function empty:
+    >>> matrix = [[-345, 2], [65.09, 809], [4, 2]]
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Should raise an exception TypeError matrix of empty lists:
+    >>> matrix = [[], [], []]
+    >>> matrix_divided(matrix, 8)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
