@@ -19,4 +19,4 @@ def add_integer(a, b=98):
         b = int(b)
     else:
         raise TypeError("b must be an integer")
-    return a + b
+    return int(a + b)
