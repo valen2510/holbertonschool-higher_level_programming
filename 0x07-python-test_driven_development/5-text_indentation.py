@@ -7,12 +7,18 @@
 
 
 def text_indentation(text):
+    """Print text with two newlines after ? . and : characters.
+        Rise TypeError when text is not a str
+    """
     if type(text) is not str:
         raise TypeError("text must be a string")
     text_new = text.replace('.', ".\n\n").replace('?', "?\n\n")\
         .replace(':', ":\n\n")
-    for ch in range(len(text_new)):
+    ch = 0
+    while ch < len(text_new):
         if text_new[ch] == ' ' and text_new[ch - 1] == '\n':
+            while text_new[ch] == ' ':
+                ch += 1
             continue
         if ch < len(text_new):
             print("{}".format(text_new[ch]), end="")
