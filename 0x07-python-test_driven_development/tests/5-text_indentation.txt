@@ -1,0 +1,74 @@
+======================
+4. Text Indententation
+======================
+Function
+========
+Function to print a text with two new lines afeter each of these characteres: '.', '?' and ':'.
+There are no blansk spaces before o after every sentence and the entry argument muts be type 
+string, otherwise raise TypeError.
+
+Import module:
+-------------
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Tests:
+-----
+
+Should print the splited text:
+    >>> text_indentation("I know your race: It is made up of sheep. It is governed \
+    ... by minorities, seldom or never  by majorities. It suppresses its feelings \
+    ... and its beliefs and follows the handful that makes the most noise")
+    I know your race:
+    <BLANKLINE>
+    It is made up of sheep.
+    <BLANKLINE>
+    It is governed by minorities, seldom or never  by majorities.
+    <BLANKLINE>
+    It suppresses its feelings and its beliefs and follows the handful that makes the most noise
+
+    Should print the splited text:
+    >>> text_indentation("Howdy. How you doin'? By the way, isn't your name: Mark.")
+    Howdy.
+    <BLANKLINE>
+    How you doin'?
+    <BLANKLINE>
+    By the way, isn't your name:
+    <BLANKLINE>
+    Mark.
+    <BLANKLINE>
+
+    Should print just the text:
+    >>> text_indentation("Every one knew he could foretell wars and famines, \
+    ... though that was not so hard, for there was always a war, and generally \
+    ... a famine somewhere")
+    Every one knew he could foretell wars and famines, though that was not so hard, for there was always a war, and generally a famine somewhere
+
+    Should raise an exception TypeError for no string argument:
+    >>> text_indentation(3)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    Should raise an exception TypeError for no string argument:
+    >>> text_indentation(["Free" "hot" "dogs"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    Should raise an exception NameError for no defined argument:
+    >>> text_indentation(Twain)
+    Traceback (most recent call last):
+    ...
+    NameError: name 'Twain' is not defined
+
+    Should raise an exception TypeError for missing argument:
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+    Should raise an exception TypeError for more than one argument:
+    >>> text_indentation("Test", "Test", "Test")
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() takes 1 positional argument but 3 were given
