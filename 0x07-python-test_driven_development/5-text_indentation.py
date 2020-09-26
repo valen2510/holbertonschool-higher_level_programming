@@ -19,8 +19,8 @@ def text_indentation(text):
         if text_new[ch] == ' ' and text_new[ch - 1] == '\n':
             while text_new[ch] == ' ':
                 ch += 1
-            continue
         if ch < len(text_new):
             print("{}".format(text_new[ch]), end="")
         else:
             print("{}".format(text_new[ch]), end="")
+        ch += 1
