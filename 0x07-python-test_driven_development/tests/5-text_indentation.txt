@@ -37,6 +37,19 @@ Should print the splited text:
     Mark.
     <BLANKLINE>
 
+    Should print the splited characteres:
+    >>> text_indentation("h   .   we   ?    :      toy     .   ?")
+    h   .
+    <BLANKLINE>
+    we   ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    toy     .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+
     Should print just the text:
     >>> text_indentation("Every one knew he could foretell wars and famines, \
     ... though that was not so hard, for there was always a war, and generally \
