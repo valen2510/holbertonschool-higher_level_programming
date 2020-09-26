@@ -17,6 +17,10 @@ Should return the sum of two integers:
     >>> add_integer(8, 6)
     14
 
+Should return an integer (check type):
+    >>> type(add_integer(-3.465446789, -4.83349889)) == int
+    True
+
 Should return the sum of a = float and b = int:
     >>> add_integer(3.2, 4)
     7
@@ -33,9 +37,11 @@ Should return the sum of a = 2 and b = -2:
     >>> add_integer(2, -2)
     0
 
-Should return the sum of a = 2 and b = -2:
-    >>> add_integer(2, -2)
-    0
+Should raise an exception ValueError:
+    >>> add_integer(float('nan'), -2)
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
 
 Should raise an exception TypeError for a:
     >>> add_integer(None)
