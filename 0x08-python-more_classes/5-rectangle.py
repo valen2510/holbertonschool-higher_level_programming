@@ -112,4 +112,6 @@ class Rectangle:
         return "Rectangle(" + str(self.width) + "," + str(self.height) + ")"
 
     def __del__(self):
+        """Delete base class part of the instance
+        """
         print("Bye rectangle...")
