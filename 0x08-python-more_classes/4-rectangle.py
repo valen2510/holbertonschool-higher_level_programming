@@ -109,4 +109,4 @@ class Rectangle:
         Returns:
             str: Representation of the Rectangle class
         """
-        return "Rectangle(" + str(self.width) + "," + str(self.height) + ")"
+        return "Rectangle({}, {})".format(self.__width, self.__height)
