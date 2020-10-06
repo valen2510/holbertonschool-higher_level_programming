@@ -36,19 +36,19 @@ Tests:
     >>> base_g.integer_validator("Peter", 5.89)
     Traceback (most recent call last):
     ...
-    TypeError: must be an integer
+    TypeError: Peter must be an integer
 
     Should raise ValueError:
     >>> base_g.integer_validator("Peter", -37)
     Traceback (most recent call last):
     ...
-    ValueError: must be greater than 0
+    ValueError: Peter must be greater than 0
 
     Should raise ValueError:
     >>> base_g.integer_validator("Peter", 0)
     Traceback (most recent call last):
     ...
-    ValueError: must be greater than 0
+    ValueError: Peter must be greater than 0
 
     Should raise Exception:
     >>> base_g.area()
