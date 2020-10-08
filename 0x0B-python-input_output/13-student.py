@@ -30,7 +30,7 @@ class Student:
         """Replaces all attributes of the Student instance
 
         Args:
-            json (dict): instance dictionary 
+            json (dict): instance dictionary
         """
         if json:
             self.__dict__ = json
