@@ -4,6 +4,7 @@
 
 
 import json
+import csv
 
 
 class Base:
@@ -89,8 +90,41 @@ class Base:
         Returns:
             list : list of instances
         """
-        if not cls.__name__ = ".json":
+        if not cls.__name__ + ".json":
             return []
         with open(cls.__name__ + '.json', encoding="utf-8") as reader:
             data = cls.from_json_string(reader.read())
         return [cls.create(**dic) for dic in data]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Function that write to a CSV file
+        from a Python dictionary
+
+        Args:
+            list_objs (list): list of objects
+        """
+        if cls.__name__ == "Rectangle":
+            attr = ['id', 'width', 'height', 'x', 'y']
+        else:
+            attr = ['id', 'size', 'x', 'y']
+
+        with open(cls.__name__ + ".csv", "w", encoding="utf-8") as file:
+            write = csv.DictWriter(file, fieldnames=attr)
+            write.writeheader()
+            for obj in list_objs:
+                write.writerow(cls.to_dictionary(obj))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Function that load the objcets of a CSV file
+        as dictionary, create instances and returns a
+        list of instances
+
+        Returns:
+            list : list of intances
+        """
+        with open(cls.__name__ + ".csv", encoding="utf-8") as file:
+            read = csv.DictReader(file)
+            new_list = [{k: int(v) for k, v in obj.items()} for obj in read]
+            return [cls.create(**dic) for dic in new_list]
