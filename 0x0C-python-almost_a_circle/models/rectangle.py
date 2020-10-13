@@ -108,7 +108,7 @@ class Rectangle(Base):
             value (int): y value
         """
         if type(value) is not int:
-            raise TypeError("x must be an integer")
+            raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
@@ -151,6 +151,6 @@ class Rectangle(Base):
         Returns:
             dict: attribute dictionary of Rectangle
         """
-        new_dict = {'x': self.x, 'y': self.y, 'id': self.id,
-                    'height': self.height, 'width': self.width}
+        new_dict = {'id': self.id, 'width': self.width, 'height': self.height,
+                    'x': self.x, 'y': self.y}
         return new_dict
