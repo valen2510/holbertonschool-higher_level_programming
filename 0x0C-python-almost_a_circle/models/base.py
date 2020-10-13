@@ -94,11 +94,12 @@ class Base:
         Returns:
             list : list of instances
         """
-        if not cls.__name__ + ".json":
+        try:
+            with open(cls.__name__ + '.json', encoding="utf-8") as reader:
+                data = cls.from_json_string(reader.read())
+                return [cls.create(**dic) for dic in data]
+        except FileNotFoundError:
             return []
-        with open(cls.__name__ + '.json', encoding="utf-8") as reader:
-            data = cls.from_json_string(reader.read())
-        return [cls.create(**dic) for dic in data]
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
