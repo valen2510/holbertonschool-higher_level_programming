@@ -17,6 +17,8 @@ class TestBase(unittest.TestCase):
     """
 
     def test_AA_documentation(self):
+        """test class Base documentation in methods and functions
+        """
         self.assertTrue(len(Base.__doc__) > 0)
         func = inspect.getmembers(Base, predicate=inspect.ismethod)
         for name, method in func:
@@ -25,13 +27,21 @@ class TestBase(unittest.TestCase):
         for name, method in func2:
             self.assertTrue(len(method.__doc__) > 0)
 
-    def test_pep8_conformance(self):
-        """Test that we conform to PEP8."""
+    def test_pep8_Base_class(self):
+        """Test that we conform to PEP8 for base class"""
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/base.py'])
         self.assertEqual(result.total_errors, 0, "Found code style errors")
 
+    def test_pep8_test_base(self):
+        """Test that we conform to PEP8 in test for base class"""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['tests/test_models/test_base.py'])
+        self.assertEqual(result.total_errors, 0, "Found code style errors")
+
     def test_A_ID_value(self):
+        """tests for class base differente instances
+        """
         obj = Base()
         self.assertEqual(obj.id, 1)
         obj2 = Base(5)
@@ -40,6 +50,9 @@ class TestBase(unittest.TestCase):
         self.assertEqual(obj3.id, 2)
 
     def test_B_JSON_repr_success(self):
+        """tests for JSON object string representation
+        for Rectangle class and Square class
+        """
         r1 = Rectangle(15, 10, 5, 3)
         json_string = Base.to_json_string([r1.to_dictionary()])
         self.assertIn('"width": 15', json_string)
@@ -55,7 +68,10 @@ class TestBase(unittest.TestCase):
         self.assertIn('"y": 9', json_string2)
         self.assertIs(type(json_string2), str)
 
-    def test_C_JSON_repr_void(self):
+    def test_C_JSON_repr_empty(self):
+        """tests for JSON object string representation in case
+        None and empty list entry arguments
+        """
         json_string = Base.to_json_string([])
         self.assertEqual(json_string, "[]")
         self.assertIs(type(json_string), str)
@@ -65,11 +81,17 @@ class TestBase(unittest.TestCase):
         self.assertIs(type(json_string2), str)
 
     def test_D_SAVE_to_file_empty(self):
+        """Test for save to file method in case of empty
+        list in entry argument
+        """
         Base.save_to_file([])
         with open("Base.json", encoding="utf-8") as reader:
             self.assertEqual(reader.read(), "[]")
 
     def test_E_SAVE_to_file(self):
+        """Test for save to file method for Rectangle and Square
+        objects
+        """
         r1 = Rectangle(4, 9, 13)
         r2 = Rectangle(7, 3, 1, 2)
         Rectangle.save_to_file([r1, r2])
@@ -91,10 +113,16 @@ class TestBase(unittest.TestCase):
             self.assertEqual(s2.to_dictionary(), dic_s2)
 
     def test_F_from_string_empty(self):
+        """test to check list of JSON string representation
+        of empty list and None arguments
+        """
         self.assertEqual(Base.from_json_string("[]"), [])
         self.assertEqual(Base.from_json_string(None), [])
 
     def test_G_from_string(self):
+        """test to check list of JSON string representation
+        of Rectangle and Square objects
+        """
         list_dic = [
                     {'id': 56, 'width': 16, 'height': 8},
                     {'id': 9, 'width': 1, 'height': 7}
@@ -113,6 +141,8 @@ class TestBase(unittest.TestCase):
         self.assertIs(type(list_output2), list)
 
     def test_H_create(self):
+        """test new objects with Rectangle and Square class
+        """
         r = Rectangle(8, 6, 10)
         check = Rectangle.create(**r.to_dictionary())
         self.assertFalse(r is check)
