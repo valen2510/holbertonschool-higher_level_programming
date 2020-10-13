@@ -36,7 +36,7 @@ class Base:
             str: JSON object as a string
         """
         if list_dictionaries is None or len(list_dictionaries) == 0:
-            return []
+            return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -66,9 +66,9 @@ class Base:
         Returns:
             list : list of JSON string
         """
-        if json_string is not None or json_string != "":
-            return json.loads(json_string)
-        return []
+        if json_string == "[]" or json_string is None:
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
