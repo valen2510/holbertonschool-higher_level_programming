@@ -80,7 +80,15 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             s = Square()
 
-    def test_C_str(self):
+    def test_C_area(self):
+        """test the area method of a square
+        """
+        s = Square(8)
+        self.assertEqual(s.area(), 64)
+        s = Square(3667)
+        self.assertEqual(s.area(), 13446889)
+
+    def test_D_str(self):
         """test string representation of an object
         """
         s = Square(70, 17)
@@ -88,7 +96,24 @@ class TestRectangle(unittest.TestCase):
         s = Square(39, 23, 42, 65)
         self.assertEqual(str(s), '[Square] (65) 23/42 - 39')
 
-    def test_D_update_args(self):
+    def test_E_display(self):
+        """test the display representation of a square
+        """
+        s = Square(6)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            s.display()
+        out = f.getvalue()
+        self.assertEqual(out, ('#' * 6 + '\n') * 6)
+
+        s = Square(76, 3, 9, 900)
+        f = io.StringIO()
+        with redirect_stdout(f):
+            s.display()
+        out = f.getvalue()
+        self.assertEqual(out, "\n" * 9 + (" " * 3 + '#' * 76 + '\n') * 76)
+
+    def test_F_update_args(self):
         """test to update square object with arbitrary arguments
         """
         s = Square(7, 32, 6, 18)
@@ -100,7 +125,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s.y, 23)
         self.assertEqual(s.x, 41)
 
-    def test_E_update_kwargs(self):
+    def test_G_update_kwargs(self):
         """
         Test for update method: kwargs
         """
@@ -114,7 +139,7 @@ class TestRectangle(unittest.TestCase):
         s.update(x=0, size=2, y=569, id=8)
         self.assertEqual([s.id, s.size, s.x, s.y], [8, 2, 0, 569])
 
-    def test_F_to_dictionary(self):
+    def test_H_to_dictionary(self):
         """
         Test for dictionary of object Square
         """
