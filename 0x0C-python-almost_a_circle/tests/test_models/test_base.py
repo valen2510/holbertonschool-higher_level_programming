@@ -39,6 +39,9 @@ class TestBase(unittest.TestCase):
         result = pep8style.check_files(['tests/test_models/test_base.py'])
         self.assertEqual(result.total_errors, 0, "Found code style errors")
 
+    def setUp(self):
+        Base._Base__nb_objects = 0
+
     def test_A_ID_value(self):
         """tests for class base differente instances
         """
@@ -93,9 +96,9 @@ class TestBase(unittest.TestCase):
         objects
         """
         r1 = Rectangle(4, 9, 13)
-        r2 = Rectangle(7, 3, 1, 2)
+        r2 = Rectangle(7, 3, 1, 2, 6)
         Rectangle.save_to_file([r1, r2])
-        dic_r1 = {"id": 5, "width": 4, "height": 9, "x": 13, "y": 0}
+        dic_r1 = {"id": 1, "width": 4, "height": 9, "x": 13, "y": 0}
         dic_r2 = {"id": 6, "width": 7, "height": 3, "x": 1, "y": 2}
         with open("Rectangle.json", encoding="utf-8") as reader:
             self.assertIs(type(reader.read()), str)
@@ -105,8 +108,8 @@ class TestBase(unittest.TestCase):
         s1 = Square(12, 4, 6)
         s2 = Square(5)
         Square.save_to_file([s1, s2])
-        dic_s1 = {"id": 7, "size": 12, "x": 4, "y": 6}
-        dic_s2 = {"id": 8, "size": 5, "x": 0, "y": 0}
+        dic_s1 = {"id": 2, "size": 12, "x": 4, "y": 6}
+        dic_s2 = {"id": 3, "size": 5, "x": 0, "y": 0}
         with open("Square.json", encoding="utf-8") as reader:
             self.assertIs(type(reader.read()), str)
             self.assertEqual(s1.to_dictionary(), dic_s1)
