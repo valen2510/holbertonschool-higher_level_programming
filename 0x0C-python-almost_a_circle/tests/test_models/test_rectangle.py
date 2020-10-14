@@ -62,20 +62,36 @@ class TestRectangle(unittest.TestCase):
         """
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r = Rectangle(-43, 6)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(0, 82)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r = Rectangle("holi", 16)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle(67.9, 32, 9)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Rectangle([6, 9, 0], 45)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(5, -73, 1)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r = Rectangle(5, 0)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             r = Rectangle(16, 3.8)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r = Rectangle(16, (6, 3, 9))
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-            r = Rectangle(5, 10, -28)
+            r = Rectangle(5, 12, -28)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r = Rectangle(16, 7, (4, 6))
+            r = Rectangle(5, 7, (4, 6))
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Rectangle(16, 31, 'x')
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             r = Rectangle(5, 10, 8, -1)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(16, 7, 4, [6])
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Rectangle(16, 7, 4, 'y')
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Rectangle(16, 7, 4, 5.2)
 
     def test_B_wrong_number_arguments(self):
         """test to check entry values for a Rectangle
