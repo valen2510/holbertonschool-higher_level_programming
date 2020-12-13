@@ -14,10 +14,6 @@ if __name__ == '__main__':
                 cities.state_id WHERE states.name LIKE BINARY %s \
                     ORDER BY cities.id", (argv[4], ))
     row = cu.fetchall()
-    for city in row:
-        if city is row[-1]:
-            print(city[0])
-        else:
-            print(city[0], end=", ")
+    print(", ".join(city[0] for city in row))
     cu.close()
     db.close()
