@@ -2,6 +2,6 @@
 
 const arrayData = require('./100-data').list;
 
-const array2 = arrayData.map(element => element * arrayData.indexOf(element));
+const arrayDataIndex = arrayData.map(function(currentValue, index) {return currentValue * index});
 console.log(arrayData);
-console.log(array2);
+console.log(arrayDataIndex);
