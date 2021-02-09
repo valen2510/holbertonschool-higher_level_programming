@@ -13,6 +13,6 @@ request(url, function (error, response, body) {
         counter++;
       }
     }
-    console.log(counter);
   }
+  console.log(counter);
 });
