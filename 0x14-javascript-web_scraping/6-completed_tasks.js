@@ -8,16 +8,14 @@ request(url, function (error, response, body) {
     console.error(error);
   } else {
     const dic = {};
-    let numTasks = 1;
     const data = JSON.parse(body);
-    let userId = data[0].userId;
     for (const task of data) {
-      if (task.userId !== userId) {
-        numTasks = 1;
-        userId = task.userId;
-      }
       if (task.completed) {
-        dic[userId] = numTasks++;
+        if (dic[task.userId]) {
+          dic[task.userId]++;
+        } else {
+          dic[task.userId] = 1;
+        }
       }
     }
     console.log(dic);
